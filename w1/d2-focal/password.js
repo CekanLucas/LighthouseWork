@@ -2,6 +2,14 @@ const args = process.argv.slice(2).join(' ');
 
 const obfuscate = str => {
 
+  //realised that cant use Array.prototype.replace() method 
+  //here is my own version 
+
+  const replacer = (reg, replace) => {
+    const regex = RegExp(reg,'ig');
+    
+  }
+
   // --- SOLUTION 1 ---
   // return str.replace(/a/g,'4').replace(/e/g,'3').replace(/o/g,'0').replace(/l/g,'1');
   
