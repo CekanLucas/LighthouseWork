@@ -2,25 +2,33 @@ const args = process.argv.slice(2).join(' ');
 
 const obfuscate = str => {
 
-  //realised that cant use Array.prototype.replace() method 
-  //here is my own version 
-
-  const replacer = (reg, replace) => {
-    const regex = RegExp(reg,'ig');
-    
-  }
-
-  // --- SOLUTION 1 ---
-  // return str.replace(/a/g,'4').replace(/e/g,'3').replace(/o/g,'0').replace(/l/g,'1');
   
-  // --- SOLUTION 2 ---
-  const replaceChars={
+  const replaceChars={ //replacement rules object
     'a':'4',
     'e':'3',
     'o':'0',
     'l':'1'
   }
-  return str.replace(/(a)|(e)|(o)|(l)/g, match => replaceChars[match]);
+
+  //realised that cant use Array.prototype.replacer() method 
+  //here is my own version 
+  
+  function replacer(input) {
+    let strArr = input.split('') 
+    return strArr.map( letter => {
+      return replaceChars[letter]? replaceChars[letter] : letter;
+    }).join('');
+  }
+  
+  // --- SOLUTION 1 --- (not good used .replace())
+  // return str.replace(/a/g,'4').replace(/e/g,'3').replace(/o/g,'0').replace(/l/g,'1');
+  
+  
+  // --- SOLUTION 2 --- (not good used .replace())
+  // return replace(str,/(a)|(e)|(o)|(l)/g, match => replaceChars[match]);
+
+  // --- SOLUTION 3 --- (good becuase didnt us .replace())
+  return replacer(str, replaceChars)
 }
 
 console.log( obfuscate(args) );
