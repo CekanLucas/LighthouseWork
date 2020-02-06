@@ -79,18 +79,38 @@ const mostPopular = Data => {
         ansName = Data[nId].name;
       }
     }
-
   }
   return ansName
 }
 
 // prints a list of everyone &
 // the names of those who follow them
-const printAll = data => {
+const printAll = Data => {
+  let followerObj = {};
+  for(let id in Data){
+    followerObj[Data[id].name] = {
+      'follows': Data[id].follows.map( id => {
+        return Data[id].name;
+      }), // map id to name 
+      'followers':[]
+    }
+  }
+  //populate follower array in followerObj
+  for(let name in followerObj){
+    //we got name associated with follows array 
+    //loop though follows array 
+    for(let follow of followerObj[name].follows){
+      followerObj[follow].followers.push(name);
+    }
+  }
 
+
+  console.log(followerObj)
+  // console.log('--- '+Data[id].name + ' ---\nFollowers:')
 }
+printAll(data);
 
 // returns list of names for those follow but dont get followed back
-const unrequitedFollowers = data => {
+const unrequitedFollowers = Data => {
 
 }
