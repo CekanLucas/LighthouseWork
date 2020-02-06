@@ -103,12 +103,15 @@ const printAll = Data => {
       followerObj[follow].followers.push(name);
     }
   }
-
-
-  console.log(followerObj)
-  // console.log('--- '+Data[id].name + ' ---\nFollowers:')
+  //use completed followerObj to print everything
+  for(let person in followerObj){
+    console.log('\n--- '+ person + ' ---\nFollowers:')
+    followerObj[person].followers.forEach( el => {
+      console.log(' - '+el);
+    })
+  }
 }
-printAll(data);
+// printAll(data);
 
 // returns list of names for those follow but dont get followed back
 const unrequitedFollowers = Data => {
