@@ -57,7 +57,7 @@ const rollDie = function () {
 
 // however, instead of a random die, we want to create a cheat die that would let us predict the next number. Create a function called makeLoadedDie() which returns a function that when called, seems to generate random numbers between 1 and 6, but in fact returns numbers in a row from a hardcoded list.
 
-function makeLoadedDie() {
+/* function makeLoadedDie() {
   const list = [5, 4, 6, 1, 6, 4, 2, 3, 3, 5];
   return function() {
     currentroll = nextId() - 1;
@@ -69,4 +69,26 @@ const rollLoadedDie = makeLoadedDie();
 
 console.log(rollLoadedDie());  // 5
 console.log(rollLoadedDie());  // 4
-console.log(rollLoadedDie());  // 6
+console.log(rollLoadedDie());  // 6 */
+
+// Implement a function countdownGenerator() that takes in a number x and returns a function that counts down when it is called (see starter code below).
+
+const countdownGenerator = function (x) {
+  let currentCount = x + 1;
+  return function(){
+    currentCount--;
+    currentCount  > 0 ? console.log(`T-minus ${currentCount}...`) :
+    currentCount  < 0 ? console.log('Rockets already gone, bub!') : 
+                        console.log('Blast Off!');
+
+    return x;
+  }
+};
+
+const countdown = countdownGenerator(3);
+countdown(); // T-minus 3...
+countdown(); // T-minus 2...
+countdown(); // T-minus 1...
+countdown(); // Blast Off!
+countdown(); // Rockets already gone, bub!
+countdown(); // Rockets already gone, bub!
