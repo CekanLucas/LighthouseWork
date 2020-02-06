@@ -23,12 +23,12 @@ const data = {
   f05: {
     name: "Elizabeth",
     age: 45,
-    follows: ["f04"]
+    follows: ["f04","f02"]
   },
   f06: {
     name: "Finn",
     age: 25,
-    follows: ["f05"]
+    follows: ["f05","f02"]
   }
 };
 
@@ -115,5 +115,36 @@ const printAll = Data => {
 
 // returns list of names for those follow but dont get followed back
 const unrequitedFollowers = Data => {
+  //copied followerObj section form pintAll()
+  let followerObj = {};
+  for(let id in Data){
+    followerObj[Data[id].name] = {
+      'follows': Data[id].follows.map( id => {
+        return Data[id].name;
+      }), // map id to name 
+      'followers':[]
+    }
+  }
+  //populate follower array in followerObj
+  for(let name in followerObj){
+    //we got name associated with follows array 
+    //loop though follows array 
+    for(let follow of followerObj[name].follows){
+      followerObj[follow].followers.push(name);
+    }
+  }
+  console.log(followerObj)
+  let notFollowedBack = [];
+  for(let name in followerObj){
 
+    // loop though followArray listing everyone who didn't follow back
+    for(let follow of followerObj[name].follows){
+      if (!followerObj[follow].follows.includes(name)){       
+        notFollowedBack.push(follow);
+        console.log(`${name} followed ${follow} but was not followed back`)
+      }
+    }
+  }
+  console.log([...new Set(notFollowedBack)]); //trick to remove duplicates
 }
+unrequitedFollowers(data);
