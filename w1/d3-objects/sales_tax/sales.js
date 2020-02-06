@@ -28,6 +28,7 @@ const companySalesData = [
 
 const calculateSalesTax = (salesData,taxRates) => {
   let ans = [];
+  let fans = {}; //final answer
 
   salesData.forEach(firm => {
     const totalSales = firm.sales.reduce(
@@ -38,6 +39,7 @@ const calculateSalesTax = (salesData,taxRates) => {
     const totalTaxes = totalSales * taxRates[firm.province];
 
     const obj = {
+      'name': firm.name,
       'totalSales': totalSales,
       'totalTaxes': totalTaxes
     };
@@ -45,9 +47,23 @@ const calculateSalesTax = (salesData,taxRates) => {
     ans.push(obj);
     
   });
-
-  console.log(ans); 
+  // console.log(ans); 
   
+  ans.forEach( firm => {
+    if( fans[firm.name] === undefined){
+      fans[firm.name] = {
+        'totalSales': firm.totalSales,
+        'totalTaxes': firm.totalTaxes
+      }
+    }
+    else {
+      fans[firm.name].totalSales += firm.totalSales;
+      fans[firm.name].totalTaxes += firm.totalTaxes;
+    }
+  })
+
+  console.log(fans);
+
 }
 calculateSalesTax(companySalesData,salesTaxRates)
 
