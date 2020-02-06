@@ -17,8 +17,8 @@ const students = [
   
     return a_alphabet < b_alphabet ? -1 :
            a_alphabet > b_alphabet ?  1 : 
-           a_age      < b_age      ? -1 :
-           a_age      > b_age      ?  1 : 0;
+           a_age      < b_age      ?  1 :
+           a_age      > b_age      ? -1 : 0;
   }
 )
 console.log(students);
