@@ -8,7 +8,7 @@ const students = [
   { id: 4, name: "alex",     age: 30 },
 ];
 
-const sortArr = students.sort( 
+ students.sort( 
   (a,b) => {
     a_alphabet  = a.name[0];
     b_alphabet  = b.name[0];
@@ -21,6 +21,6 @@ const sortArr = students.sort(
            a_age      > b_age      ?  1 : 0;
   }
 )
-console.log(sortArr);
+console.log(students);
 
-// Note: Array.sort() can sort alphabetically 
+// Note: Array.sort() can sort alphabetically (if in the same case ) (lexical sorting)
