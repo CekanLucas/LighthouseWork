@@ -53,7 +53,6 @@ const biggestFollower = Data => {
              a < b ?  1 :0;
     }
   ) 
-  // console.log(target[0].name);
   return target[0].name;
 }
 // biggestFollower(data);
@@ -64,18 +63,13 @@ const mostPopular = Data => {
   for(let id in Data){
     list[id] = 0;
   }
-  // list: { f01: 0, f02: 0, f03: 0, f04: 0, f05: 0, f06: 0 }
 
   for(let id in list){
     let followerArray = Data[id].follows;
-    // console.log(id)
     followerArray.forEach(el => {
       list[el]++;
     });
   }
-  console.log(list)
-  // lis: { f01: 2, f02: 2, f03: 2, f04: 3, f05: 3, f06: 3 }
-  
 
   let ansName = '';
   for(let cId in list){
@@ -83,17 +77,12 @@ const mostPopular = Data => {
     for(let nId in list){
       if (list[cId] < list[nId]){
         ansName = Data[nId].name;
-        // console.log(ansName, cId,list[cId], nId, list[nId])
       }
     }
 
-    // console.log(currfcount, fcount);
   }
-  console.log(ansName);
-  // console.log(ansId);
-
+  return ansName
 }
-mostPopular(data);
 
 // prints a list of everyone &
 // the names of those who follow them
