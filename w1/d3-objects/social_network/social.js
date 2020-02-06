@@ -56,19 +56,35 @@ const biggestFollower = Data => {
   // console.log(target[0].name);
   return target[0].name;
 }
-biggestFollower(data);
+// biggestFollower(data);
+
 // returns person with most followers
-const mostPopular = (data) => {
+const mostPopular = Data => {
+  let list = {};
+  for(let id in Data){
+    list[id] = 0;
+  }
+  // console.log(list);
+
+  for(let id in list){
+    let followerArray = Data[id].follows;
+    // console.log(id)
+    followerArray.forEach(el => {
+      list[el]++;
+    });
+  }
+  // console.log(list)
 
 }
+mostPopular(data);
 
 // prints a list of everyone &
 // the names of those who follow them
-const printAll = (data) => {
+const printAll = data => {
 
 }
 
 // returns list of names for those follow but dont get followed back
-const unrequitedFollowers = (data) => {
+const unrequitedFollowers = data => {
 
 }
