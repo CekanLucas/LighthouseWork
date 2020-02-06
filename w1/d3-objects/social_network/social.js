@@ -13,7 +13,7 @@ const data = {
   f03: {
     name: "Charlie",
     age: 35,
-    follows: ["f01", "f04", "f06"]
+    follows: ["f01", "f04", "f06","f05"]
   },
   f04: {
     name: "Debbie",
@@ -64,7 +64,7 @@ const mostPopular = Data => {
   for(let id in Data){
     list[id] = 0;
   }
-  // console.log(list);
+  // list: { f01: 0, f02: 0, f03: 0, f04: 0, f05: 0, f06: 0 }
 
   for(let id in list){
     let followerArray = Data[id].follows;
@@ -73,7 +73,24 @@ const mostPopular = Data => {
       list[el]++;
     });
   }
-  // console.log(list)
+  console.log(list)
+  // lis: { f01: 2, f02: 2, f03: 2, f04: 3, f05: 3, f06: 3 }
+  
+
+  let ansName = '';
+  for(let cId in list){
+    
+    for(let nId in list){
+      if (list[cId] < list[nId]){
+        ansName = Data[nId].name;
+        // console.log(ansName, cId,list[cId], nId, list[nId])
+      }
+    }
+
+    // console.log(currfcount, fcount);
+  }
+  console.log(ansName);
+  // console.log(ansId);
 
 }
 mostPopular(data);
