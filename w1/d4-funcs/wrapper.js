@@ -5,18 +5,17 @@ logs
   - return value 
   of the callback function */
 
-const wrapLog = function (callback, name) {
-  return (...args) => 
+const wrapLog = function () {
+  return (...arg) => {
     console.log(
       '\nThe name of the function is:',
-      arguments['1'],
+      arguments[1],
       '\nThe arguments are:',
-      ...args,  
+      ...arg,  
       '\nThe returned value is:',
-      arguments['0'].apply(this,[...args])
-    )
+      arguments[0].apply(this,[...arg])
+    )}
 };
-
 const area = function (x, y) {
   return x * y;
 };
